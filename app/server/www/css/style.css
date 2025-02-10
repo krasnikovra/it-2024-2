@@ -1,3 +1,11 @@
-body {
+html, body {
+    height: 100%;
     background-color: antiquewhite;
+}
+
+.centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
