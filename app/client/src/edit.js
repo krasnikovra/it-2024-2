@@ -1,11 +1,12 @@
-import { mount, el } from "../node_modules/redom/dist/redom.es";
+import { el } from "../node_modules/redom/dist/redom.es";
+import mountWithHeader from "./utils/mountWithHeader.js";
 import FormHeader from "./components/forms/FormHeader.jsx";
 import FormInput from "./components/forms/FormInput.jsx";
 import FormButton from "./components/forms/FormButton.jsx";
 import FormCheckbox from "./components/forms/FormCheckbox.jsx";
 
 const Edit =
-  <div class="container-md">
+  <div>
     <div class="mb-3">
       <FormHeader text="Редактирование"/>
     </div>
@@ -28,7 +29,7 @@ const Edit =
     </div>
   </div>;
 
-mount(
-    document.getElementById("main"),
+mountWithHeader(
+    document.getElementById("root"),
     Edit
 );
