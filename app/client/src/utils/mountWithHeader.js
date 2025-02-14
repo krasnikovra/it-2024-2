@@ -2,8 +2,6 @@ import { mount, el } from "../../node_modules/redom/dist/redom.es";
 import Header from "../components/Header.jsx";
 
 export default function mountWithHeader(root, element) {
-  console.log(root);
-
   const appDiv = Object.assign(
     document.createElement("div"),
     {
