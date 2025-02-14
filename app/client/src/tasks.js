@@ -2,6 +2,7 @@ import { el } from "../node_modules/redom/dist/redom.es";
 import mountWithHeader from "./utils/mountWithHeader.js";
 import FormHeader from "./components/forms/FormHeader.jsx";
 import Task from "./components/task/Task.jsx";
+import TaskNewButton from "./components/task/TaskNewButton.jsx";
 
 const testTasksData = [
   {
@@ -27,6 +28,7 @@ const Tasks =
       {testTasksData.map((taskData, index) => 
         <Task name={taskData.name} deadline={taskData.deadline} key={`task-${index}`}/>
       )}
+      <TaskNewButton/>
     </div>
   </div>;
 
