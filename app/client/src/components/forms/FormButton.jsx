@@ -1,8 +1,18 @@
 import { el } from "../../../node_modules/redom/dist/redom.es";
 
-class FormButtonPrimary {
+class FormButton {
   constructor(props) {
-    const {text, ...otherProps} = props;
+    const {text, type, ...otherProps} = props;
+
+    let bootstrapBtnType = "btn-light";
+    switch(type) {
+      case "primary":
+        bootstrapBtnType = "btn-primary";
+        break;
+      case "secondary":
+        bootstrapBtnType = "btn-secondary";
+        break;
+    }
 
     // This instantiation is needed because
     // redom + babel fails to render a jsx with
@@ -11,7 +21,7 @@ class FormButtonPrimary {
       document.createElement("button"),
       {
         type: "button",
-        className: "btn btn-primary w-100",
+        className: `btn ${bootstrapBtnType} w-100`,
         textContent: props.text,
         ...otherProps
       }
@@ -24,4 +34,4 @@ class FormButtonPrimary {
   }
 }
 
-export default FormButtonPrimary;
+export default FormButton;

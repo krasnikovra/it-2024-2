@@ -2,12 +2,13 @@ import { el } from "../../../node_modules/redom/dist/redom.es";
 
 class FormInput {
   constructor(props) {
-    const {label, ...otherProps} = props;
+    const {label, key, ...otherProps} = props;
 
+    const inputId = `base-input-${key}`;
     this.el = 
       <div>
-        <label for="base-input" class="form-label">{label}</label>
-        <input id="base-input" type="text" class="form-control" {...otherProps}/>
+        <label for={inputId} class="form-label">{label}</label>
+        <input id={inputId} type="text" class="form-control" {...otherProps}/>
       </div>
   }
 }
