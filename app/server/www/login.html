@@ -1,17 +1,38 @@
 <!DOCTYPE html>
 <html lang="ru">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title></title>
-        <link href="css/bootstrap.min.css" rel="stylesheet" />
-        <link href="css/style.css" rel="stylesheet" />
-    </head>
-    <body>
-        <div class="container centered">
-            <div id="main"></div>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container centered">
+        <div id="main">
+            <div class="container-md">
+                <div class="mb-3">
+                    <h1 class="text-center">Вход</h1>
+                </div>
+                <div class="mb-3">
+                    <label for="base-input-email" class="form-label">E-mail</label>
+                    <input id="base-input-email" type="text" class="form-control" placeholder="somebody@gmail.com">
+                </div>
+                <div class="mb-4">
+                    <label for="base-input-pwd" class="form-label">Пароль</label>
+                    <input id="base-input-pwd" type="text" class="form-control" placeholder="********">
+                    <p><small>Нет аккаунта? <a href="./register.html">Зарегистрироваться</a></small></p>
+                </div>
+                <div class="text-center">
+                    <button type="button" class="btn btn-primary w-100">Войти</button>
+                </div>
+            </div>
         </div>
-        <script src="js/bootstrap.bundle.min.js"></script>
-        <script src="js/login.js"></script>
-    </body>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/login.js"></script>
+</body>
+
 </html>

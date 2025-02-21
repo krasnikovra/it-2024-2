@@ -22,7 +22,7 @@ const Register =
     <FormButton text="Зарегистрироваться" type="primary"/>
   </div>;
 
-mount(
-    document.getElementById("main"),
-    Register
-);
+// mount(
+//     document.getElementById("main"),
+//     Register
+// );

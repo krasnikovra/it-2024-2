@@ -11,13 +11,13 @@ const Edit =
       <FormHeader text="Редактирование"/>
     </div>
     <div class="mb-3">
-      <FormInput label="Название задачи" placeholder="Моя задача"/>
+      <FormInput label="Название задачи" placeholder="Моя задача" key="name"/>
     </div>
     <div class="mb-3">
-      <FormInput label="Дедлайн" placeholder="01.01.2025"/>
+      <FormInput label="Дедлайн" placeholder="01.01.2025" key="deadline"/>
     </div>
     <div class="mb-4">
-      <FormCheckbox label="Важная задача" key="important-task" />
+      <FormCheckbox label="Важная задача" key="important-task"/>
     </div>
     <div class="row">
       <div class="col">
@@ -29,7 +29,7 @@ const Edit =
     </div>
   </div>;
 
-mountWithHeader(
-    document.getElementById("root"),
-    Edit
-);
+// mountWithHeader(
+//     document.getElementById("root"),
+//     Edit
+// );

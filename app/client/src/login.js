@@ -19,7 +19,7 @@ const Login =
     <FormButton text="Войти" type="primary"/>
   </div>;
 
-mount(
-    document.getElementById("main"),
-    Login
-);
+// mount(
+//     document.getElementById("main"),
+//     Login
+// );

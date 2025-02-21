@@ -32,7 +32,7 @@ const Tasks =
     </div>
   </div>;
 
-mountWithHeader(
-    document.getElementById("root"),
-    Tasks
-);
+// mountWithHeader(
+//     document.getElementById("root"),
+//     Tasks
+// );
