@@ -6,24 +6,26 @@ export default class Button {
             text = '',
             icon = null,
             type = 'primary', // 'primary', 'secondary'
+            className = '',
         } = settings;
 
         this._prop = {
             text,
             icon,
-            type
+            type,
+            className,
         };
 
         this.el = this._ui_render();
     }
 
     _ui_render = () => {
-        const { text, icon, type } = this._prop;
+        const { text, icon, type, className } = this._prop;
 
         const iconRendered = icon ? <i className={`bi bi-${icon}`}></i> : null;
 
         return (
-            <button className={`btn btn-${type}`}>
+            <button className={`btn btn-${type} ${className}`}>
                 {iconRendered}
                 {text}
             </button>
