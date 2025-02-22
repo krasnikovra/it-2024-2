@@ -6,12 +6,14 @@ export default class Input {
             label = '',
             placeholder = '',
             className = '',
+            key = 'undefined',
         } = settings;
 
         this._prop = {
             label,
             placeholder,
-            className
+            className,
+            key
         }
 
         this.el = this._ui_render();
@@ -23,12 +25,13 @@ export default class Input {
     }
 
     _ui_render = () => {
-        const { label, placeholder, className } = this._prop;
+        const { label, placeholder, className, key } = this._prop;
+        
+        const inputId = `base-input-${key}`;
         return (
             <div>
-                <label className={`form-label ${className}`}>{label}
-                    <input type='text' className='form-control' placeholder={placeholder}/>
-                </label>
+                <label for={inputId} className={`form-label ${className}`}>{label}</label>
+                <input type='text' id={inputId} className='form-control' placeholder={placeholder}/>
             </div>
         )
     }
