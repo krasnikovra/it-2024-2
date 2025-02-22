@@ -1,9 +1,27 @@
 import { mount, el } from '../node_modules/redom/dist/redom.es';
-import LoginFrom from './widget/loginFrom'
+import LoginForm from './widget/loginForm'
 
-const langId = 'ru'; // 'ru', 'en'
+const lang = 'ru'; // 'ru', 'en'
+
+class LoginPage {
+    constructor(settings = {}) {
+        this._prop = settings;
+        this.el = this._ui_render();
+    }
+
+    _ui_render = () => {
+        return (
+            <div className='container-md'>
+                <div className='mb-3'>
+                    <h1 className='text-center'>Вход</h1>
+                </div>
+                <LoginForm />
+            </div>
+        );
+    }
+}
 
 mount(
-    document.getElementById('main'),
-    <LoginFrom langId={langId}/>
+    document.getElementById("main"),
+    <LoginPage />
 );
