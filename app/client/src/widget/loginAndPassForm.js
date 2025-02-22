@@ -10,9 +10,9 @@ export default class LoginAndPassForm {
         return (
             <div>
                 <div className='mb-3'>
-                    <Input label='E-mail' placeholder='somebody@gmail.com'/>
+                    <Input className='w-100' label='E-mail' placeholder='somebody@gmail.com'/>
                 </div>
-                <Input label='Пароль' placeholder='********'/>
+                <Input className='w-100' label='Пароль' placeholder='********'/>
             </div>
         )
     }
