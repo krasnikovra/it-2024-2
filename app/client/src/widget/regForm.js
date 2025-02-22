@@ -1,7 +1,8 @@
 import { mount, el } from '../../node_modules/redom/dist/redom.es';
-import LoginAndPassFrom from '../widget/loginAndPassFrom';
+import Input from '../atom/input';
+import LoginAndPassForm from '../widget/loginAndPassForm';
 
-export default class LoginFrom {
+export default class RegFrom {
     constructor() {
         this.el = this._ui_render();
     }
@@ -9,7 +10,8 @@ export default class LoginFrom {
     _ui_render = () => {
         return (
             <div className='d-flex flex-column'>
-                <LoginAndPassFrom />
+                <LoginAndPassForm />
+                <Input label='Repeat password' />
             </div>
         )
     }

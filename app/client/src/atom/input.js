@@ -4,22 +4,25 @@ export default class Input {
     constructor(settings = {}) {
         const {
             label = '',
+            placeholder = '',
         } = settings;
 
         this._prop = {
             label,
+            placeholder
         }
+
         this.el = this._ui_render();
     }
 
     _ui_render = () => {
-        const { label } = this._prop;
+        const { label, placeholder } = this._prop;
         return (
-            <>
-                <label className="form-label">{label}
-                    <input type="text" className="form-control" />
+            <div>
+                <label className='form-label'>{label}
+                    <input type='text' className='form-control' placeholder={placeholder}/>
                 </label>
-            </>
+            </div>
         )
     }
 }

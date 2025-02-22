@@ -1,3 +1,26 @@
-body {
+html, body {
+    height: 100%;
     background-color: antiquewhite;
+}
+
+.centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0.5rem 2rem;
+}
+
+.app-body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
