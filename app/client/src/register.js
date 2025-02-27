@@ -2,8 +2,7 @@ import { mount, el } from '../node_modules/redom/dist/redom.es';
 import RegForm from './widget/regForm'
 
 class RegPage {
-    constructor(settings = {}) {
-        this._prop = settings;
+    constructor() {
         this.el = this._ui_render();
     }
 
