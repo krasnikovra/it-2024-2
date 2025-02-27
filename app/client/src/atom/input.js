@@ -28,9 +28,19 @@ export default class Input {
         const inputId = `base-input-${key}`;
         return (
             <div>
-                <label for={inputId} className='form-label'>{label}</label>
-                <input type='text' id={inputId} className='form-control' placeholder={placeholder}/>
+                <label this='_ui_label' for={inputId} className='form-label'>{label}</label>
+                <input this='_ui_input' type='text' id={inputId} className='form-control' placeholder={placeholder}/>
             </div>
         )
+    }
+
+    update = (data) => {
+        const {
+            label = this._prop.label,
+            placeholder = this._prop.placeholder
+        } = data;
+
+        this._ui_label.textContent = label;
+        this._ui_input.placeholder = placeholder;
     }
 }

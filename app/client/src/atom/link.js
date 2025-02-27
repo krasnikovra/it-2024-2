@@ -19,7 +19,17 @@ export default class Link {
         const { text, href } = this._prop;
 
         return (
-            <a href={href}>{text}</a>
+            <a this='_ui_a' href={href}>{text}</a>
         );
+    }
+
+    update = (data) => {
+        const {
+            text = this._prop.text,
+            href = this._prop.href
+        } = data;
+
+        this._ui_a.textContent = text;
+        this._ui_a.href = href;
     }
 }

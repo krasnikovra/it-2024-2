@@ -25,10 +25,24 @@ export default class Button {
         const iconRendered = icon ? <i className={`bi bi-${icon}`}></i> : null;
 
         return (
-            <button className={`btn btn-${type} ${className}`}>
+            <button this='_ui_button' className={`btn btn-${type} ${className}`}>
                 {iconRendered}
                 {text}
             </button>
         );
+    }
+
+    update = (data) => {
+        const {
+            text = this._prop.text,
+            icon = this._prop.icon,
+            type = this._prop.type,
+            className = this._prop.className
+        } = data;
+
+        const iconRendered = icon ? <i className={`bi bi-${icon}`}></i> : null;
+
+        this._ui_button.innerHTML = `${iconRendered ?? ''}${text}`;
+        this._ui_button.className = `btn btn-${type} ${className}`;
     }
 }
