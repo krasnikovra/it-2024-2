@@ -4,8 +4,7 @@ import LoginForm from './widget/loginForm'
 const lang = 'ru'; // 'ru', 'en'
 
 class LoginPage {
-    constructor(settings = {}) {
-        this._prop = settings;
+    constructor() {
         this.el = this._ui_render();
     }
 
