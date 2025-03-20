@@ -8,12 +8,12 @@ html, body {
     justify-content: center;
     align-items: center;
     height: 100%;
+    width: auto;
 }
 
 .header {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
     width: 100%;
     padding: 0.5rem 2rem;

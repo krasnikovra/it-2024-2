@@ -29,7 +29,7 @@ export default class Input {
         return (
             <div>
                 <label this='_ui_label' for={inputId} className='form-label'>{label}</label>
-                <input this='_ui_input' type='text' id={inputId} className='form-control' placeholder={placeholder}/>
+                <input this='_ui_input' type='text' id={inputId} className='form-control' placeholder={placeholder} />
             </div>
         )
     }

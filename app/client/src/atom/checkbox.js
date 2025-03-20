@@ -21,9 +21,17 @@ export default class Checkbox {
         const inputId = `base-check-${key}`;
         return (
             <div class='form-check'>
-                <label for={inputId} className='form-check-label'>{label}</label>
-                <input type='checkbox' id={inputId} className='form-check-input'/>
+                <label this='_ui_label' for={inputId} className='form-check-label'>{label}</label>
+                <input type='checkbox' id={inputId} className='form-check-input' />
             </div>
         )
+    }
+
+    update = (data) => {
+        const {
+            label = this._prop.label,
+        } = data;
+
+        this._ui_label.textContent = label;
     }
 }

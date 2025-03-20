@@ -1,6 +1,8 @@
 import { mount, el } from "../node_modules/redom/dist/redom.es";
-import mountWithHeader from "./utils/mountWithHeader.js";
+import { defaultLang } from "./utils/constants.js";
+import WithHeader from "./utils/withHeader.js";
 import EditForm from "./widget/editForm.js";
+import t9n from "./utils/t9n/index.js";
 
 class Edit {
     constructor() {
@@ -11,15 +13,24 @@ class Edit {
         return (
             <div>
                 <div class="mb-3">
-                    <h1 className='text-center'>Редактирование</h1>
+                    <h1 this='_ui_h1' className='text-center'>{t9n(defaultLang, 'editing')}</h1>
                 </div>
-                <EditForm />
+                <EditForm this='_ui_edit_form' />
             </div>
         );
     }
+
+    update = (data) => {
+        const { lang = defaultLang } = data;
+
+        this._ui_h1.innerHTML = t9n(lang, 'editing');
+        this._ui_edit_form.update(data);
+    }
 }
 
-mountWithHeader(
+mount(
     document.getElementById("root"),
-    <Edit />
+    <WithHeader authorized>
+      <Edit/>
+    </WithHeader>
 );

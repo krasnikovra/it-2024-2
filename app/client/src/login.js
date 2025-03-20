@@ -1,17 +1,11 @@
 import { mount, el } from '../node_modules/redom/dist/redom.es';
-import { library } from './utils/library';
-import LoginForm from './widget/loginForm'
-
-const lang = 'en'; // 'ru', 'en'
+import LoginForm from './widget/loginForm';
+import t9n from './utils/t9n/index';
+import { defaultLang } from './utils/constants';
+import WithHeader from './utils/withHeader';
 
 class LoginPage {
-    constructor(settings = {}) {
-        const {
-            lang = 'ru',
-        } = settings;
-
-        this._lang = lang;
-
+    constructor() {
         this.el = this._ui_render();
     }
 
@@ -19,28 +13,24 @@ class LoginPage {
         return (
             <div className='container-md'>
                 <div className='mb-3'>
-                    <h1 this="_ui_h1" className='text-center'>Вход</h1>
+                    <h1 this="_ui_h1" className='text-center'>{t9n(defaultLang, 'login')}</h1>
                 </div>
                 <LoginForm this="_ui_login_form" />
             </div>
         );
     }
 
-    update = () => {
-        this._ui_h1.textContent = library[this._lang]['login'];
-        
-        const data = {
-            lang: this._lang
-        };
-        this._ui_login_form.update(data);
-    }
+    update = (data) => {
+        const { lang = defaultLang } = data;
 
-    onmount = () => {
-        this.update();
+        this._ui_h1.textContent = t9n(lang, 'login');
+        this._ui_login_form.update(data);
     }
 }
 
 mount(
-    document.getElementById("main"),
-    <LoginPage lang={lang} />
+    document.getElementById("root"),
+    <WithHeader>
+        <LoginPage />
+    </WithHeader>
 );

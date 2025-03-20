@@ -22,14 +22,16 @@ export default class Button {
     _ui_render = () => {
         const { text, icon, type, className } = this._prop;
 
-        const iconRendered = icon ? <i className={`bi bi-${icon}`}></i> : null;
-
         return (
             <button this='_ui_button' className={`btn btn-${type} ${className}`}>
-                {iconRendered}
+                {this._ui_icon(icon)}
                 {text}
             </button>
         );
+    }
+
+    _ui_icon = (icon) => {
+        return icon ? <i className={`bi bi-${icon}`}></i> : null;
     }
 
     update = (data) => {
@@ -40,9 +42,7 @@ export default class Button {
             className = this._prop.className
         } = data;
 
-        const iconRendered = icon ? <i className={`bi bi-${icon}`}></i> : null;
-
-        this._ui_button.innerHTML = `${iconRendered ?? ''}${text}`;
+        this._ui_button.innerHTML = `${this._ui_icon(icon) ?? ''}${text}`;
         this._ui_button.className = `btn btn-${type} ${className}`;
     }
 }

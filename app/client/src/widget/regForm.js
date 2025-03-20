@@ -3,6 +3,8 @@ import Input from '../atom/input';
 import Link from '../atom/link';
 import Button from '../atom/button';
 import LoginAndPassForm from '../widget/loginAndPassForm';
+import t9n from '../utils/t9n/index';
+import { defaultLang } from '../utils/constants';
 
 export default class RegFrom {
     constructor() {
@@ -14,15 +16,36 @@ export default class RegFrom {
             <div>
                 <div class='mb-4'>
                     <div className='mb-3'>
-                        <LoginAndPassForm />
+                        <LoginAndPassForm this='_ui_login_and_pass_form' />
                     </div>
-                    <Input label='Повторите пароль' placeholder='********' />
-                    <p><small>Уже есть аккаунт? <Link text='Войти' href='./login.html' /></small></p>
+                    <Input this='_ui_input_repeat_pwd' label={t9n(defaultLang, 'repeat_password')} placeholder='********' />
+                    <p>
+                        <small>
+                            <span this='_ui_span'>{t9n(defaultLang, 'already_have_account_question')}</span>&nbsp;
+                            <Link this='_ui_link' text={t9n(defaultLang, 'to_login')} href='./login.html' />
+                        </small>
+                    </p>
                 </div>
                 <div className='text-center'>
-                    <Button text='Зарегистрироваться' className='w-100' type='primary' />
+                    <Button this='_ui_btn' text={t9n(defaultLang, 'to_register')} className='w-100' type='primary' />
                 </div>
             </div>
         )
+    }
+
+    update = (data) => {
+        const { lang = defaultLang } = data;
+
+        this._ui_login_and_pass_form.update(data);
+        this._ui_input_repeat_pwd.update({
+            label: t9n(lang, 'repeat_password')
+        });
+        this._ui_span.innerHTML = t9n(lang, 'already_have_account_question');
+        this._ui_link.update({
+            text: t9n(lang, 'to_login')
+        });
+        this._ui_btn.update({
+            text: t9n(lang, 'to_register')
+        })
     }
 }
