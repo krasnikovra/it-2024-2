@@ -32,6 +32,10 @@ export default class Checkbox {
             label = this._prop.label,
         } = data;
 
-        this._ui_label.textContent = label;
+        if (label !== this._prop.label) {
+            this._ui_label.textContent = label;
+        }
+
+        this._prop = { ...this._prop, label };
     }
 }

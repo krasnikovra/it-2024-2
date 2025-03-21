@@ -29,7 +29,13 @@ export default class Link {
             href = this._prop.href
         } = data;
 
-        this._ui_a.textContent = text;
-        this._ui_a.href = href;
+        if (text !== this._prop.text) {
+            this._ui_a.textContent = text;
+        }
+        if (href !== this._prop.href) {
+            this._ui_a.href = href;
+        }
+
+        this._prop = { ...this._prop, text, href };
     }
 }

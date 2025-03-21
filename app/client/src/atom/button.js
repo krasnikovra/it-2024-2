@@ -93,6 +93,6 @@ export default class Button {
             this._ui_button.onclick = onClick;
         }
 
-        this._prop = { text, icon, type, disabled, loading, onClick, className };
+        this._prop = { ...this._prop, text, icon, type, disabled, loading, onClick, className };
     }
 }

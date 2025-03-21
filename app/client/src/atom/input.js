@@ -17,11 +17,6 @@ export default class Input {
         this.el = this._ui_render();
     }
 
-    updateLabel = (label) => {
-        // TODO:
-        console.log('input. change lang', label)
-    }
-
     _ui_render = () => {
         const { label, placeholder, key } = this._prop;
 
@@ -40,7 +35,13 @@ export default class Input {
             placeholder = this._prop.placeholder
         } = data;
 
-        this._ui_label.textContent = label;
-        this._ui_input.placeholder = placeholder;
+        if (label !== this._prop.label) {
+            this._ui_label.textContent = label;
+        }
+        if (placeholder !== this._prop.placeholder) {
+            this._ui_input.placeholder = placeholder;
+        }
+        
+        this._prop = { ...this.prop, label, placeholder };
     }
 }
