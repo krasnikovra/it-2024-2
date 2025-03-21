@@ -29,7 +29,7 @@ export default class Header {
     }
 
     update = (data) => {
-        const { lang = defaultLang } = data;
+        const { lang = defaultLang } = data; 
 
         this._ui_select.update(data);
         this._ui_h1.textContent = t9n(lang, 'task_manager');

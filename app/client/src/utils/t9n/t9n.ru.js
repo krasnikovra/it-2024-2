@@ -1,6 +1,20 @@
 export default {
     'task_manager': 'Менеджер задач',
     'login': 'Вход',
+    'loading_n_seconds_left': n => {
+        let secondPostfix = '';
+        let leftPostfix = 'ось';
+        const nBetween10and20 = n > 10 && n < 20;
+        if (n % 10 === 1 && !nBetween10and20) {
+            secondPostfix = 'а';
+            leftPostfix = 'ась';
+        }
+        else if ([2, 3, 4].includes(n % 10) && !nBetween10and20) {
+            secondPostfix = 'ы';
+        }
+
+        return `Загрузка... (Остал${leftPostfix} ${n} секунд${secondPostfix})`;
+    },
     'email': 'E-mail',
     'somebody_email': 'somebody@gmail.com',
     'password': 'Пароль',

@@ -1,6 +1,7 @@
 export default {
     'task_manager': 'Task manager',
     'login': 'Login',
+    'loading_n_seconds_left': n => `Loading... (${n} second${n % 10 === 1 ? '' : 's'} left)`,
     'email': 'E-mail',
     'somebody_email': 'somebody@gmail.com',
     'password': 'Password',
