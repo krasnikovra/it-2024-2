@@ -4,6 +4,9 @@ import Link from '../atom/link';
 import LoginAndPassForm from './loginAndPassForm';
 import t9n from '../utils/t9n/index';
 import { defaultLang } from '../utils/constants';
+import fake_fetch from '../api/index';
+import responseStatus from '../api/status';
+import localStorageItems from '../utils/localStorageItems';
 
 export default class LoginForm {
     constructor() {
@@ -31,23 +34,27 @@ export default class LoginForm {
     }
 
     _get_on_btn_click = (lang) => {
-        const toggleBtnLabel = (secLeft) => {
-            setTimeout(() => {
-                if (secLeft > 0) {
-                    this._ui_button.update({ text: t9n(lang, 'loading_n_seconds_left', 'em', secLeft) });
-                    toggleBtnLabel(secLeft - 1);
-                } else {
-                    this._ui_button.endLoading(t9n(lang, 'to_login'));
-                }
-            }, 1000);
-        }
+        return async () => {
+            const login = this._ui_login_and_pass_form.get_login();
+            const password = this._ui_login_and_pass_form.get_password();
 
-        const sec = 3;
-        return () => {
-            this._ui_button.startLoading(
-                t9n(lang, 'loading_n_seconds_left', 'em', sec)
+            this._ui_button.start_loading(
+                t9n(lang, 'loading', 'em')
             );
-            toggleBtnLabel(sec - 1);
+            const response = await fake_fetch('/api/v1/login', { login, password });
+            this._ui_button.end_loading(
+                t9n(lang, 'to_login')
+            );
+
+            const { status, detail } = response;
+            if (status === responseStatus.ok) {
+                const { token } = detail
+                localStorage.setItem(localStorageItems.token, token);
+                window.location.href = './edit.html';
+            } else {
+                const { error } = detail;
+                console.error('status', status, 'error', error);
+            }
         }
     }
 
@@ -64,4 +71,5 @@ export default class LoginForm {
             onClick: this._get_on_btn_click(lang)
         });
     }
+
 }

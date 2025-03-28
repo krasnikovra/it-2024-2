@@ -1,3 +1,4 @@
 export default Object.freeze({
-    langId: 'langId'
+    langId: 'langId',
+    token: 'token'
 });

@@ -44,11 +44,11 @@ export default class Button {
         return <span className='spinner-border spinner-border-sm me-2' />
     }
 
-    startLoading = (loadingLabel) => { 
+    start_loading = (loadingLabel) => { 
         this.update({ disabled: true, text: loadingLabel, loading: true });
     }
 
-    endLoading = (label) => {
+    end_loading = (label) => {
         this.update({ disabled: false, text: label, loading: false });
     }
 

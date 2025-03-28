@@ -15,7 +15,7 @@ export default class LoginAndPassForm {
                     <Input this='_ui_input_email' label={t9n(defaultLang, 'email')} 
                       placeholder={t9n(defaultLang, 'somebody_email')} key="e-mail" />
                 </div>
-                <Input this='_ui_input_pwd' label={t9n(defaultLang, 'password')} placeholder='********' key="pwd"/>
+                <Input this='_ui_input_pwd' label={t9n(defaultLang, 'password')} placeholder='********' type='password' key="pwd"/>
             </div>
         )
     }
@@ -31,4 +31,8 @@ export default class LoginAndPassForm {
             label: t9n(lang, 'password'),
         });
     }
+
+    get_login = () => this._ui_input_email.get_value();
+
+    get_password = () => this._ui_input_pwd.get_value();
 }

@@ -1,6 +1,7 @@
 export default {
     'task_manager': 'Менеджер задач',
     'login': 'Вход',
+    'loading': 'Загрузка',
     'loading_n_seconds_left': n => {
         let secondPostfix = '';
         let leftPostfix = 'ось';
