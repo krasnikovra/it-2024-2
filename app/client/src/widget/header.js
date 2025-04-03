@@ -3,6 +3,7 @@ import Button from '../atom/button';
 import SelectLang from './selectLang';
 import { defaultLang } from '../utils/constants';
 import t9n from '../utils/t9n/index';
+import localStorageItems from '../utils/localStorageItems';
 
 export default class Header {
     constructor(settings = {}) {
@@ -23,7 +24,8 @@ export default class Header {
                     <SelectLang this='_ui_select' />
                 </div>
                 { authorized && 
-                    <Button this='_ui_btn' type="button" className='ms-auto' text={t9n(defaultLang, 'to_log_out')} /> }
+                    <Button this='_ui_btn' type="button" className='ms-auto' text={t9n(defaultLang, 'to_log_out')} 
+                        onClick={() => { localStorage.removeItem(localStorageItems.token); window.location.href = './login.html' }}/> }
             </div>
         );
     }

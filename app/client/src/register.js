@@ -2,7 +2,8 @@ import { mount, el } from '../node_modules/redom/dist/redom.es';
 import { defaultLang } from './utils/constants';
 import t9n from './utils/t9n/index';
 import WithHeader from './utils/withHeader';
-import RegForm from './widget/regForm'
+import RegForm from './widget/regForm';
+import localStorageItems from './utils/localStorageItems';
 
 class RegPage {
     constructor() {
@@ -25,6 +26,13 @@ class RegPage {
 
         this._ui_h1.innerHTML = t9n(lang, 'registration');
         this._ui_reg_form.update(data);
+    }
+
+    onmount = () => {
+        const token = localStorage.getItem(localStorageItems.token);
+        if (token) {
+            window.location.href = './edit.html';
+        }
     }
 }
 

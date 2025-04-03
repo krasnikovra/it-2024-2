@@ -7,6 +7,7 @@ import { defaultLang } from '../utils/constants';
 import fake_fetch from '../api/index';
 import responseStatus from '../api/status';
 import localStorageItems from '../utils/localStorageItems';
+import { error as loginError } from '../api/login';
 
 export default class LoginForm {
     constructor() {
@@ -16,14 +17,14 @@ export default class LoginForm {
     _ui_render = () => {
         return (
             <div>
-                <div className='mb-4'>
+                <div>
                     <LoginAndPassForm this='_ui_login_and_pass_form' />
-                    <p>
+                    <div className="my-2 text-center">
                         <small>
                             <span this='_ui_span'>{t9n(defaultLang, 'no_account_question')}</span>&nbsp;
                             <Link this='_ui_link' text={t9n(defaultLang, 'to_register')} href='./register.html' />
                         </small>
-                    </p>
+                    </div>
                 </div>
                 <div className='text-center'>
                     <Button this='_ui_button' text={t9n(defaultLang, 'to_login')}
@@ -35,6 +36,10 @@ export default class LoginForm {
 
     _get_on_btn_click = (lang) => {
         return async () => {
+            if (!this._validate(lang)) {
+                return;
+            }
+
             const login = this._ui_login_and_pass_form.get_login();
             const password = this._ui_login_and_pass_form.get_password();
 
@@ -53,9 +58,33 @@ export default class LoginForm {
                 window.location.href = './edit.html';
             } else {
                 const { error } = detail;
-                console.error('status', status, 'error', error);
+
+                switch(error) {
+                    case loginError.emptyLogin:
+                        this._ui_login_and_pass_form.invalidateLogin(
+                            t9n(lang, 'enter_nonempty_login')
+                        );
+                        this._ui_login_and_pass_form.removeInvalidityOfPassword();
+                        break;
+                    case loginError.emptyPwd:
+                        this._ui_login_and_pass_form.invalidatePassword(
+                            t9n(lang, 'enter_nonempty_password')
+                        );
+                        this._ui_login_and_pass_form.removeInvalidityOfLogin();
+                        break;
+                    case loginError.wrongLoginOrPwd:
+                        this._ui_login_and_pass_form.invalidateLogin();
+                        this._ui_login_and_pass_form.invalidatePassword(
+                            t9n(lang, 'wrong_login_or_pwd')
+                        );
+                        break;
+                }
             }
         }
+    }
+
+    _validate = (lang) => {
+        return this._ui_login_and_pass_form.validate(lang);
     }
 
     update = (data) => {
@@ -71,5 +100,4 @@ export default class LoginForm {
             onClick: this._get_on_btn_click(lang)
         });
     }
-
 }

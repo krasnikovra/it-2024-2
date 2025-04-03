@@ -24,9 +24,10 @@ export default class Input {
 
         const inputId = `base-input-${key}`;
         return (
-            <div>
+            <div this='_ui_container'>
                 <label this='_ui_label' for={inputId} className='form-label'>{label}</label>
                 <input this='_ui_input' type={type} id={inputId} className='form-control' placeholder={placeholder} />
+                <div this='_ui_invalid_feedback' className="invalid-feedback" />
             </div>
         )
     }
@@ -47,9 +48,21 @@ export default class Input {
         if (type !== this._prop.type) {
             this._ui_input.type = type;
         }
-        
+
         this._prop = { ...this.prop, label, placeholder, type };
     }
 
     get_value = () => this._ui_input.value;
+
+    invalidate = (text = '') => {
+        this._ui_invalid_feedback.innerHTML = text;
+        this._ui_input.setCustomValidity('empty');
+        this._ui_container.classList.add('was-validated');
+    }
+
+    removeInvalidity = () => {
+        this._ui_invalid_feedback.innerHTML = '';
+        this._ui_container.classList.remove('was-validated');
+        this._ui_input.setCustomValidity('');
+    }
 }

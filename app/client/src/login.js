@@ -3,6 +3,7 @@ import LoginForm from './widget/loginForm';
 import t9n from './utils/t9n/index';
 import { defaultLang } from './utils/constants';
 import WithHeader from './utils/withHeader';
+import localStorageItems from './utils/localStorageItems';
 
 class LoginPage {
     constructor() {
@@ -25,6 +26,13 @@ class LoginPage {
 
         this._ui_h1.textContent = t9n(lang, 'login');
         this._ui_login_form.update(data);
+    }
+
+    onmount = () => {
+        const token = localStorage.getItem(localStorageItems.token);
+        if (token) {
+            window.location.href = './edit.html';
+        }
     }
 }
 
